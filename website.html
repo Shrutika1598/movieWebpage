@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" href="image/logo.png">
+    <script src="js/ajax.js"></script>
+
+    <title>Movies Store</title>
+<!doctype html> 
+<input onkeyup="getanswer(document.getElementById('qurybox').value)" id="qurybox" placeholder="Find Your Favourite Search" class="search"> 
+<div id="search"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<script> var data;
+function getanswer(q){
+$.get("https://www.omdbapi.com/?s="+q+"&apikey=ba1f4581", function(rawdata){
+var rawstring =JSON.stringify(rawdata);
+data =JSON.parse(rawstring);
+var title = data.Search[0].Title;
+var year = data.Search[0].Year; 
+var imdburl="https://www.imdb.com/title/"+data.Search[0].imdbID+"/";
+
+var posterurl =data.Search[0].Poster;
+document.getElementById('search').innerHTML="<h1>"+title+"</h1><br> <img src= '"+posterurl+"'><br><p> Year Released:"+year+"</p> <br> <p> IMDB page: <a href='"+imdburl+"'target='_blank'>"+imdburl+"</a></p>"; }); }
+</script>
+</head>
+<body>
+    <div>
+        <a href="#" class="logo">
+            <img src="image/logo.png"/>
+        </a>
+    </div>
+    <!-- 
+    <header>
+        <form id="form">
+            <input type="text" placeholder="Find Your Favourite Search" id="search"
+            class="search">
+        </form>
+    </header>
+    -->
+
+    <main id="main">
+        <div class="movie">
+            <img src="image/beautyAndBeast.png" alt="Image">
+
+            <div class="movie-info">
+                <h2>Beauty and The Beast</h2>
+                <span class="green">9.8</span>
+            </div>
+
+            <div class="overview">
+                <h2>overview</h2>
+                Belle, a beautiful young woman, agrees to live with the Beast in exchange for the return of her abducted father. Soon, Belle discovers that her hideous captor is actually an enchanted prince.
+            </div>
+        </div>
+
+        <div class="movie">
+            <img src="image/sleepingBeauty.png" alt="Image">
+
+            <div class="movie-info">
+                <h2>Sleeping Beauty</h2>
+                <span class="green">9.8</span>
+            </div>
+
+            <div class="overview">
+                <h2>overview</h2>
+                Filled with jealousy, the evil witch curses a newborn princess to die on her 16th birthday. However, a fairy alters the curse, allowing the princess to survive by going into a deep sleep that can be broken by true love's kiss.
+            </div>
+        </div>
+
+        <div class="movie">
+            <img src="image/cinderella.png" alt="Image">
+
+            <div class="movie-info">
+                <h2>Cinderella</h2>
+                <span class="orange">7.5</span>
+            </div>
+
+            <div class="overview">
+                <h2>overview</h2>
+                Cinderella stands no chance of attending the royal ball. When her fairy godmother appears and magically transforms her reality into a dream come true, Cinderella enchants the handsome Prince Charming at the ball.
+            </div>
+        </div>
+
+        <div class="movie">
+            <img src="image/harryPotter.png" alt="Image">
+
+            <div class="movie-info">
+                <h2>Harry Potter</h2>
+                <span class="orange">7.9</span>
+            </div>
+
+            <div class="overview">
+                <h2>overview</h2>
+                Harry Potter and Dumbledore's warning about the return of Lord Voldemort is not heeded by the wizard authorities who, in turn, look to undermine Dumbledore's authority at Hogwarts and discredit Harry.
+            </div>
+        </div>
+
+        <div class="movie">
+            <img src="image/aladdin.png" alt="Image">
+
+            <div class="movie-info">
+                <h2>Aladdin</h2>
+                <span class="orange">7.9</span>
+            </div>
+
+            <div class="overview">
+                <h2>overview</h2>
+                Aladdin, a common thief, falls in love with Princess Jasmine, but cannot marry her as he is not a prince. Jafar, a royal vizier with a hidden agenda, enlists Aladdin's help to retrieve a magical lamp.
+            </div>
+        </div> 
+
+        <div class="movie">
+            <img src="image/theLittleMermaid.png" alt="Image">
+
+            <div class="movie-info">
+                <h2>The Little Mermaid</h2>
+                <span class="red">6.4</span>
+            </div>
+
+            <div class="overview">
+                <h2>overview</h2>
+                Ursula, the sea witch, makes a devious deal with Princess Ariel allowing her to meet Eric, the human prince she loves. Unaware of her true intentions, Ariel lands herself in trouble.
+            </div>
+        </div>
+
+        <div class="movie">
+            <img src="image/snowWhite.png" alt="Image">
+
+            <div class="movie-info">
+                <h2>Snow White</h2>
+                <span class="orange">7.9</span>
+            </div>
+
+            <div class="overview">
+                <h2>overview</h2>
+                When Snow White, a princess, is exiled by her stepmother, an evil queen who wants to kill her, she runs into a forest. Soon, she is rescued by seven dwarfs who form a friendship with her.
+            </div>
+        </div>
+
+        <div class="movie">
+            <img src="image/robinHood.png" alt="Image">
+
+            <div class="movie-info">
+                <h2>Robin Hood</h2>
+                <span class="red">6.5</span>
+            </div>
+
+            <div class="overview">
+                <h2>overview</h2>
+                Robin Hood, an outlaw, starts forming a gang in Sherwood Forest to fight the injustices of the Sheriff of Nottingham. The sheriff, on orders of the greedy prince, levies unjust taxes upon the people.
+            </div>
+        </div>
+               
+    </main>
+
+    <div class="btns">
+        <a href="#">Previous</a>
+        <a href="#">Next</a>
+    </div>
+
+</body>
+</html>
